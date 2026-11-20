@@ -5,27 +5,27 @@
   | |____ _| |_| |  | | |  / ____ \| . \| |_| |____/ 
   |______|_____|_|  |_|_| /_/    \_\_|\_\\___/        
 
-OMNIROUTE-LIMPAKUS
+MAGPIE WEB
 INSTALL AND UNISTALL GUIDE
 Version 8.0.0
 
 Author / Contact:
-Omniroute-LIMPAKUS // ROOT ACCESS LAB
+Magpie Web // ROOT ACCESS LAB
 limpakus@gmail.com
 
 ======================================================================
 WHAT THIS EXTENSION DOES AND WHY IT WAS CREATED
 ======================================================================
 
-Omniroute-LIMPAKUS is a local Chrome extension created to simplify the manual
-collection and formatting of session credentials required by OmniRoute Web
+Magpie Web is a local Chrome extension created to simplify the manual
+collection and formatting of session credentials required by Magpie Web
 providers. It detects supported AI platforms, reads only the credential type
 needed for the selected provider, and copies the result to the clipboard so it
-can be pasted into OmniRoute.
+can be pasted wherever you use that credential.
 
 The extension was created because each AI platform stores authentication data
 differently: cookies, Local Storage values, bearer tokens, or complete request
-headers. Omniroute-LIMPAKUS provides one consistent interface for these
+headers. Magpie Web provides one consistent interface for these
 different methods and reduces repetitive work when configuring several Web
 providers on a personal computer.
 
@@ -44,12 +44,12 @@ INSTALL
 4. Enable Developer mode.
 5. Click Load unpacked.
 6. Select the extension folder.
-7. Optionally pin Omniroute-LIMPAKUS to the Chrome toolbar.
+7. Optionally pin Magpie Web to the Chrome toolbar.
 
 UNISTALL
 --------
 1. Open chrome://extensions.
-2. Find Omniroute-LIMPAKUS.
+2. Find Magpie Web.
 3. Click Remove.
 4. Confirm removal.
 5. Delete the extracted folder if it is no longer needed.
@@ -66,12 +66,12 @@ INSTALAR
 4. Ativa Modo de programador.
 5. Clica em Carregar expandida.
 6. Seleciona a pasta extension.
-7. Opcionalmente, fixa Omniroute-LIMPAKUS na barra do Chrome.
+7. Opcionalmente, fixa Magpie Web na barra do Chrome.
 
 DESINSTALAR
 -----------
 1. Abre chrome://extensions.
-2. Localiza Omniroute-LIMPAKUS.
+2. Localiza Magpie Web.
 3. Clica em Remover.
 4. Confirma a remoção.
 5. Apaga a pasta extraída quando já não for necessária.
@@ -88,12 +88,12 @@ INSTALAR
 4. Activa Modo de desarrollador.
 5. Haz clic en Cargar descomprimida.
 6. Selecciona la carpeta extension.
-7. Opcionalmente, fija Omniroute-LIMPAKUS en la barra de Chrome.
+7. Opcionalmente, fija Magpie Web en la barra de Chrome.
 
 DESINSTALAR
 -----------
 1. Abre chrome://extensions.
-2. Busca Omniroute-LIMPAKUS.
+2. Busca Magpie Web.
 3. Haz clic en Eliminar.
 4. Confirma la eliminación.
 5. Borra la carpeta extraída cuando ya no sea necesaria.
@@ -110,12 +110,12 @@ INSTALLER
 4. Activez le Mode développeur.
 5. Cliquez sur Charger l’extension non empaquetée.
 6. Sélectionnez le dossier extension.
-7. Épinglez éventuellement Omniroute-LIMPAKUS.
+7. Épinglez éventuellement Magpie Web.
 
 DÉSINSTALLER
 ------------
 1. Ouvrez chrome://extensions.
-2. Recherchez Omniroute-LIMPAKUS.
+2. Recherchez Magpie Web.
 3. Cliquez sur Supprimer.
 4. Confirmez la suppression.
 5. Supprimez le dossier extrait lorsqu’il n’est plus nécessaire.
@@ -132,12 +132,12 @@ INSTALLIEREN
 4. Aktiviere den Entwicklermodus.
 5. Klicke auf Entpackte Erweiterung laden.
 6. Wähle den Ordner extension.
-7. Optional kannst du Omniroute-LIMPAKUS anheften.
+7. Optional kannst du Magpie Web anheften.
 
 DEINSTALLIEREN
 --------------
 1. Öffne chrome://extensions.
-2. Suche Omniroute-LIMPAKUS.
+2. Suche Magpie Web.
 3. Klicke auf Entfernen.
 4. Bestätige die Entfernung.
 5. Lösche den entpackten Ordner, wenn er nicht mehr benötigt wird.
@@ -154,12 +154,12 @@ INSTALLARE
 4. Attiva Modalità sviluppatore.
 5. Fai clic su Carica estensione non pacchettizzata.
 6. Seleziona la cartella extension.
-7. Facoltativamente, fissa Omniroute-LIMPAKUS.
+7. Facoltativamente, fissa Magpie Web.
 
 DISINSTALLARE
 -------------
 1. Apri chrome://extensions.
-2. Trova Omniroute-LIMPAKUS.
+2. Trova Magpie Web.
 3. Fai clic su Rimuovi.
 4. Conferma la rimozione.
 5. Elimina la cartella estratta quando non è più necessaria.

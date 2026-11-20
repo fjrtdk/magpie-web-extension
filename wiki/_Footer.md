@@ -1,2 +1,2 @@
 ---
-*OmniRoute Web Extension Wiki • Maintained by [rktiwari00](https://github.com/rktiwari00) • Companion to [OmniRoute](https://github.com/diegosouzapw/OmniRoute)*
+*Magpie Web Extension Wiki • Maintained by [fjrtdk](https://github.com/fjrtdk) • Companion to [Magpie](https://github.com/yetone/magpie)*

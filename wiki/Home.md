@@ -1,6 +1,6 @@
-# Welcome to the OmniRoute Web Extension Wiki
+# Welcome to the Magpie Web Extension Wiki
 
-The **OmniRoute Web Extension** is an open-source companion tool for the [OmniRoute AI Gateway](https://github.com/diegosouzapw/OmniRoute). It automates the extraction, formatting, and management of authentication session credentials across 25+ AI web platforms and provides an integrated software version updater for your local OmniRoute installation.
+The **Magpie Web Extension** is an open-source companion tool for the [Magpie](https://github.com/yetone/magpie). It automates the extraction, formatting, and management of authentication session credentials across 25+ AI web platforms and provides an integrated software version updater for your local Magpie installation.
 
 ---
 
@@ -12,8 +12,8 @@ The **OmniRoute Web Extension** is an open-source companion tool for the [OmniRo
 2. **[Supported Providers Matrix](Supported-Providers)**  
    Detailed guide to all 25+ supported AI platforms, their extraction methods (Cookies, Local Storage, Bearer Tokens, Chathub WebSockets), and provider-specific details.
 
-3. **[OmniRoute Version Updater](OmniRoute-Updater)**  
-   How the built-in updater monitors local server health, queries the npm registry, checks GitHub releases, and provides 1-click update commands.
+3. **[Magpie Version Updater](Magpie-Updater)**  
+   How the built-in updater monitors local server health, queries the GitHub releases, checks GitHub releases, and provides 1-click update commands.
 
 4. **[Architecture & Security](Architecture-&-Security)**  
    Deep dive into the extension's Manifest V3 architecture, zero-exfiltration privacy model, temporary memory cleanup, and permissions.
@@ -24,6 +24,6 @@ The **OmniRoute Web Extension** is an open-source companion tool for the [OmniRo
 ---
 
 ## ⚡ Quick Links
-- **GitHub Repository**: [rktiwari00/omniroute-web-extension](https://github.com/rktiwari00/omniroute-web-extension)
-- **OmniRoute Main Repo**: [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)
+- **GitHub Repository**: [fjrtdk/magpie-web-extension](https://github.com/fjrtdk/magpie-web-extension)
+- **Magpie Repo**: [yetone/magpie](https://github.com/yetone/magpie)
 - **Original Limpakus Base**: [Anjokal/OMNIROUTE---Limpakus](https://github.com/Anjokal/OMNIROUTE---Limpakus)

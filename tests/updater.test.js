@@ -54,63 +54,57 @@ async function runTests() {
     assert.strictEqual(updater.compareVersions('v3.8.50', '3.8.50'), 0);
   });
 
-  // 2. checkOmniRouteServer tests with mock fetch
-  await asyncTest('checkOmniRouteServer: online with update available', async () => {
+  // 2. checkMagpieServer tests with mock fetch
+  await asyncTest('checkMagpieServer: online with update available', async () => {
     const mockFetch = async (url, opts) => {
-      assert(url.includes('/api/system/version'));
-      assert.strictEqual(opts.headers.Authorization, 'Bearer test-key');
-      return {
-        ok: true,
-        status: 200,
-        json: async () => ({
-          current: '3.8.49',
-          latest: '3.8.51',
-          updateAvailable: true
-        })
-      };
+      if (url.includes('/api/hello')) {
+        assert.strictEqual(opts.headers.Authorization, 'Bearer test-key');
+        return { ok: true, status: 200, json: async () => ({ name: 'magpie', version: '1.2.0' }) };
+      }
+      if (url.includes('github.com/repos/yetone/magpie-releases')) {
+        return { ok: true, status: 200, json: async () => ({ tag_name: 'v1.3.0', html_url: 'https://github.com/yetone/magpie-releases/releases/tag/v1.3.0' }) };
+      }
+      throw new Error('Not mocked: ' + url);
     };
 
-    const res = await updater.checkOmniRouteServer('http://localhost:20128', 'test-key', mockFetch);
+    const res = await updater.checkMagpieServer('http://127.0.0.1:3425', 'test-key', mockFetch);
     assert.strictEqual(res.status, 'update_available');
-    assert.strictEqual(res.current, '3.8.49');
-    assert.strictEqual(res.latest, '3.8.51');
+    assert.strictEqual(res.current, '1.2.0');
+    assert.strictEqual(res.latest, '1.3.0');
     assert.strictEqual(res.updateAvailable, true);
+    assert(res.updateCommand.includes('usemagpie.ai/install.sh'));
   });
 
-  await asyncTest('checkOmniRouteServer: online and up to date', async () => {
-    const mockFetch = async () => ({
-      ok: true,
-      status: 200,
-      json: async () => ({
-        current: '3.8.51',
-        latest: '3.8.51',
-        updateAvailable: false
-      })
-    });
+  await asyncTest('checkMagpieServer: online and up to date', async () => {
+    const mockFetch = async (url) => {
+      if (url.includes('/api/hello')) {
+        return { ok: true, status: 200, json: async () => ({ name: 'magpie', version: '1.3.0' }) };
+      }
+      if (url.includes('github.com')) {
+        return { ok: true, status: 200, json: async () => ({ tag_name: 'v1.3.0' }) };
+      }
+      throw new Error('Not mocked: ' + url);
+    };
 
-    const res = await updater.checkOmniRouteServer('http://localhost:20128', '', mockFetch);
+    const res = await updater.checkMagpieServer('http://127.0.0.1:3425', '', mockFetch);
     assert.strictEqual(res.status, 'up_to_date');
     assert.strictEqual(res.updateAvailable, false);
   });
 
-  await asyncTest('checkOmniRouteServer: offline, fallback to npm registry', async () => {
+  await asyncTest('checkMagpieServer: offline, fallback to GitHub releases', async () => {
     const mockFetch = async (url) => {
-      if (url.includes('localhost')) {
-        throw new Error('Connection refused');
-      }
-      if (url.includes('registry.npmjs.org')) {
-        return {
-          ok: true,
-          status: 200,
-          json: async () => ({ version: '3.8.52' })
-        };
+      if (url.includes('127.0.0.1')) throw new Error('Connection refused');
+      if (url.includes('github.com/repos/yetone/magpie-releases')) {
+        return { ok: true, status: 200, json: async () => ({ tag_name: 'v1.3.1' }) };
       }
       throw new Error('Unknown URL: ' + url);
     };
 
-    const res = await updater.checkOmniRouteServer('http://localhost:20128', '', mockFetch);
+    const res = await updater.checkMagpieServer('http://127.0.0.1:3425', '', mockFetch);
     assert.strictEqual(res.status, 'server_offline');
-    assert.strictEqual(res.latest, '3.8.52');
+    assert.strictEqual(res.current, null);
+    assert.strictEqual(res.latest, '1.3.1');
+    assert.strictEqual(res.updateAvailable, false);
   });
 
   // 3. checkExtensionRelease tests
@@ -122,13 +116,13 @@ async function runTests() {
         status: 200,
         json: async () => ({
           tag_name: 'v8.1.0',
-          html_url: 'https://github.com/rktiwari00/omniroute-web-extension/releases/tag/v8.1.0',
+          html_url: 'https://github.com/fjrtdk/magpie-web-extension/releases/tag/v8.1.0',
           name: 'v8.1.0 Release'
         })
       };
     };
 
-    const res = await updater.checkExtensionRelease('8.0.0', 'rktiwari00/omniroute-web-extension', mockFetch);
+    const res = await updater.checkExtensionRelease('8.0.0', 'fjrtdk/magpie-web-extension', mockFetch);
     assert.strictEqual(res.status, 'update_available');
     assert.strictEqual(res.current, '8.0.0');
     assert.strictEqual(res.latest, '8.1.0');
@@ -142,11 +136,11 @@ async function runTests() {
       status: 200,
       json: async () => ({
         tag_name: 'v8.0.0',
-        html_url: 'https://github.com/rktiwari00/omniroute-web-extension/releases/tag/v8.0.0'
+        html_url: 'https://github.com/fjrtdk/magpie-web-extension/releases/tag/v8.0.0'
       })
     });
 
-    const res = await updater.checkExtensionRelease('8.0.0', 'rktiwari00/omniroute-web-extension', mockFetch);
+    const res = await updater.checkExtensionRelease('8.0.0', 'fjrtdk/magpie-web-extension', mockFetch);
     assert.strictEqual(res.status, 'up_to_date');
     assert.strictEqual(res.updateAvailable, false);
   });
@@ -168,19 +162,14 @@ async function runTests() {
     };
 
     const mockFetch = async (url) => {
-      if (url.includes('/api/system/version')) {
-        return {
-          ok: true,
-          status: 200,
-          json: async () => ({ current: '3.8.49', latest: '3.8.51', updateAvailable: true })
-        };
+      if (url.includes('/api/hello')) {
+        return { ok: true, status: 200, json: async () => ({ name: 'magpie', version: '1.2.0' }) };
+      }
+      if (url.includes('github.com/repos/yetone/magpie-releases')) {
+        return { ok: true, status: 200, json: async () => ({ tag_name: 'v1.3.0' }) };
       }
       if (url.includes('github.com')) {
-        return {
-          ok: true,
-          status: 200,
-          json: async () => ({ tag_name: 'v8.0.0', html_url: 'https://github.com/...' })
-        };
+        return { ok: true, status: 200, json: async () => ({ tag_name: 'v8.0.0', html_url: 'https://github.com/...' }) };
       }
       throw new Error('Not mocked: ' + url);
     };
@@ -190,14 +179,14 @@ async function runTests() {
       storage: mockStorage,
       fetchFn: mockFetch,
       currentExtVersion: '8.0.0',
-      omnirouteUrl: 'http://localhost:20128',
+      magpieUrl: 'http://127.0.0.1:3425',
       apiKey: 'test-key',
       forceRefresh: true
     });
 
     assert.strictEqual(result1.server.status, 'update_available');
     assert.strictEqual(result1.extension.status, 'up_to_date');
-    assert(storageData['omniroute_updater_cache']);
+    assert(storageData['magpie_updater_cache']);
 
     // Second call without forceRefresh: returns cached version
     let fetchCalled = false;

@@ -1,12 +1,12 @@
 {
   "extensionName": {
-    "message": "Omniroute-LIMPAKUS"
+    "message": "Magpie Web"
   },
   "extensionDescription": {
-    "message": "Lokales Tool zum Kopieren von Sitzungsdaten von KI-Plattformen für OmniRoute."
+    "message": "Lokales Tool zum Kopieren von Sitzungsdaten von KI-Plattformen für Magpie."
   },
   "actionTitle": {
-    "message": "Omniroute-LIMPAKUS öffnen"
+    "message": "Magpie Web öffnen"
   },
   "detectedNode": {
     "message": "ERKANNTER KNOTEN"
@@ -39,7 +39,7 @@
     "message": "Anmeldedaten werden nur auf diesem Gerät verarbeitet."
   },
   "updaterTitle": {
-    "message": "OmniRoute Updater"
+    "message": "Magpie Updater"
   },
   "updaterCheckNow": {
     "message": "Jetzt prüfen"
@@ -48,7 +48,7 @@
     "message": "Suche nach Updates..."
   },
   "updaterServerTitle": {
-    "message": "OmniRoute Server"
+    "message": "Magpie Gateway"
   },
   "updaterExtensionTitle": {
     "message": "Web-Erweiterung"
@@ -78,7 +78,7 @@
     "message": "Schließen"
   },
   "updaterServerUrl": {
-    "message": "OmniRoute Server-URL"
+    "message": "Magpie Gateway-URL"
   },
   "updaterApiKey": {
     "message": "Verwaltungs-API-Schlüssel (optional)"

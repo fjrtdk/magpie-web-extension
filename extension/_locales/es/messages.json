@@ -1,12 +1,12 @@
 {
   "extensionName": {
-    "message": "Omniroute-LIMPAKUS"
+    "message": "Magpie Web"
   },
   "extensionDescription": {
-    "message": "Herramienta local para copiar credenciales de sesión de plataformas de IA para usarlas con OmniRoute."
+    "message": "Herramienta local para copiar credenciales de sesión de plataformas de IA para usarlas con Magpie."
   },
   "actionTitle": {
-    "message": "Abrir Omniroute-LIMPAKUS"
+    "message": "Abrir Magpie Web"
   },
   "detectedNode": {
     "message": "NODO DETECTADO"
@@ -39,7 +39,7 @@
     "message": "Las credenciales se procesan únicamente en este dispositivo."
   },
   "updaterTitle": {
-    "message": "Actualizador OmniRoute"
+    "message": "Actualizador Magpie"
   },
   "updaterCheckNow": {
     "message": "Comprobar ahora"
@@ -48,7 +48,7 @@
     "message": "Buscando actualizaciones..."
   },
   "updaterServerTitle": {
-    "message": "Servidor OmniRoute"
+    "message": "Gateway Magpie"
   },
   "updaterExtensionTitle": {
     "message": "Extensión Web"
@@ -78,7 +78,7 @@
     "message": "Cerrar"
   },
   "updaterServerUrl": {
-    "message": "URL del servidor OmniRoute"
+    "message": "URL del gateway Magpie"
   },
   "updaterApiKey": {
     "message": "Clave API de gestión (opcional)"

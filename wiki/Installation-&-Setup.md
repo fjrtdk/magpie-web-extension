@@ -1,12 +1,12 @@
 # Installation & Setup Guide
 
-This guide walks you through installing and configuring the OmniRoute Web Extension on Chromium-based browsers.
+This guide walks you through installing and configuring the Magpie Web Extension on Chromium-based browsers.
 
 ---
 
 ## Prerequisites
 - Any modern Chromium browser (Google Chrome, Brave, Microsoft Edge, Opera, Vivaldi, Arc) running version 114 or newer.
-- An installed and running instance of [OmniRoute](https://github.com/diegosouzapw/OmniRoute) (optional for extraction, required for the live server updater and routing).
+  - An installed and running instance of [Magpie](https://github.com/yetone/magpie) (optional for extraction, required for the live gateway updater).
 
 ---
 
@@ -15,7 +15,7 @@ This guide walks you through installing and configuring the OmniRoute Web Extens
 ### Method 1: Git Clone (Recommended for easy updates)
 1. Open your terminal and clone the repository:
    ```bash
-   git clone https://github.com/rktiwari00/omniroute-web-extension.git
+   git clone https://github.com/fjrtdk/magpie-web-extension.git
    ```
 2. In your browser, open the extensions management page:
    - **Chrome**: `chrome://extensions`
@@ -25,20 +25,20 @@ This guide walks you through installing and configuring the OmniRoute Web Extens
 4. Click **Load unpacked**.
 5. Browse to the cloned directory and select the **`extension`** folder:
    ```text
-   omniroute-web-extension/extension
+   magpie-web-extension/extension
    ```
 6. The extension is now installed. Pin it to your browser toolbar for easy access.
 
 ### Method 2: ZIP Download
-1. Go to the [GitHub Repository Releases](https://github.com/rktiwari00/omniroute-web-extension/releases).
-2. Download `omniroute-web-extension.zip`.
+1. Go to the [GitHub Repository Releases](https://github.com/fjrtdk/magpie-web-extension/releases).
+2. Download `magpie-web-extension.zip`.
 3. Extract the archive into a permanent folder on your computer.
 4. Follow steps 2 to 5 above, selecting the extracted `extension` folder.
 
 ---
 
 ## Verifying Installation
-1. Click the **OmniRoute** icon in your toolbar.
+1. Click the **Magpie Web** icon in your toolbar.
 2. The popup should open displaying the dark cyberpunk interface with:
    - Header with logo and language dropdown (`EN`, `PT`, `ES`, `DE`, `FR`, `IT`).
    - Version badge (e.g. `v8.0.0` with green dot).

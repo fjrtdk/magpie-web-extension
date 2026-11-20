@@ -1,6 +1,19 @@
 # Changelog & Fork Evolution
 
-All notable changes, fixes, and improvements introduced in this repository (`rktiwari00/omniroute-web-extension`) relative to the original fork (`Anjokal/OMNIROUTE---Limpakus`).
+All notable changes, fixes, and improvements introduced in this repository (`fjrtdk/magpie-web-extension`) relative to the original fork (`Anjokal/OMNIROUTE---Limpakus`).
+
+---
+
+## [8.2.0] - 2026-11-20
+
+### Changed
+- **Ported from OmniRoute to [Magpie](https://github.com/yetone/magpie)**:
+  - Gateway version check now queries `GET /api/hello` on the local Magpie gateway (default `http://127.0.0.1:3425`), which answers `{"name":"magpie","version":"…"}`.
+  - Latest-version lookup moved from the npm registry to GitHub releases of `yetone/magpie-releases`.
+  - Update command is now `curl -fsSL https://usemagpie.ai/install.sh | sh`.
+  - Extension release checks target `fjrtdk/magpie-web-extension`.
+  - Settings storage keys renamed to `magpie_url` and `magpie_api_key`; the gateway key is optional and only needed for a gateway shared on the network.
+  - Rebranded the popup, options page, privacy page, and all six locales.
 
 ---
 

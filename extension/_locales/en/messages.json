@@ -1,12 +1,12 @@
 {
   "extensionName": {
-    "message": "Omniroute-LIMPAKUS"
+    "message": "Magpie Web"
   },
   "extensionDescription": {
-    "message": "Local browser extension for preparing AI provider credentials for OmniRoute."
+    "message": "Local browser extension for preparing AI provider credentials for Magpie."
   },
   "actionTitle": {
-    "message": "Open Omniroute-LIMPAKUS"
+    "message": "Open Magpie Web"
   },
   "detectedNode": {
     "message": "DETECTED NODE"
@@ -45,7 +45,7 @@
     "message": "Temporary cookies and authorization headers may be stored locally for up to 10 minutes during provider detection."
   },
   "localSecurityNoticeText2": {
-    "message": "Copied credentials remain on your clipboard until replaced. Paste immediately into OmniRoute and overwrite the clipboard afterwards."
+    "message": "Copied credentials remain on your clipboard until replaced. Paste it where you use this credential and overwrite the clipboard afterwards."
   },
   "clearCapturedData": {
     "message": "Clear captured data"
@@ -69,7 +69,7 @@
     "message": "Platform opened. Sign in and click “AUTHORIZE AND COPY” again."
   },
   "credentialCopied": {
-    "message": "Credential copied. Paste it directly into OmniRoute."
+    "message": "Credential copied. Paste it where you use this credential."
   },
   "couldNotCopy": {
     "message": "Could not copy credential."
@@ -114,7 +114,7 @@
     "message": "Supported platforms"
   },
   "updaterTitle": {
-    "message": "OmniRoute Updater"
+    "message": "Magpie Updater"
   },
   "updaterCheckNow": {
     "message": "Check Now"
@@ -123,7 +123,7 @@
     "message": "Checking for updates..."
   },
   "updaterServerTitle": {
-    "message": "OmniRoute Server"
+    "message": "Magpie Gateway"
   },
   "updaterExtensionTitle": {
     "message": "Web Extension"
@@ -153,7 +153,7 @@
     "message": "Close"
   },
   "updaterServerUrl": {
-    "message": "OmniRoute Server URL"
+    "message": "Magpie Gateway URL"
   },
   "updaterApiKey": {
     "message": "Management API Key (optional)"

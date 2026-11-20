@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "short_name": "Omniroute-LIMPAKUS",
-  "version": "8.0.0",
+  "short_name": "Magpie Web",
+  "version": "8.2.0",
   "description": "__MSG_extensionDescription__",
   "minimum_chrome_version": "114",
   "permissions": [
@@ -75,9 +75,9 @@
     "https://www.zenmux.ai/*",
     "https://yuanbao.tencent.com/*",
     "https://zenmux.ai/*",
-    "http://localhost:20128/*",
-    "http://127.0.0.1:20128/*",
-    "https://registry.npmjs.org/omniroute/*",
-    "https://api.github.com/repos/rktiwari00/omniroute-web-extension/*"
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://api.github.com/repos/yetone/magpie-releases/*",
+    "https://api.github.com/repos/fjrtdk/magpie-web-extension/*"
   ]
 }

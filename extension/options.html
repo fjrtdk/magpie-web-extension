@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Omniroute-LIMPAKUS — Settings</title>
+  <title>Magpie Web — Settings</title>
   <link rel="stylesheet" href="options.css">
 </head>
 <body>
   <main>
-    <h1>Omniroute-LIMPAKUS</h1>
+    <h1>Magpie Web</h1>
 
     <section>
       <h2>Security &amp; Privacy</h2>
@@ -16,18 +16,18 @@
     </section>
 
     <section id="updaterSection">
-      <h2>OmniRoute Server &amp; Updater</h2>
-      <p>Configure the connection to your local or remote OmniRoute instance to enable version checks and update management.</p>
+      <h2>Magpie Gateway &amp; Updater</h2>
+      <p>Configure the connection to your local Magpie gateway to enable version checks and update management.</p>
 
       <div class="form-group">
-        <label for="omnirouteUrl">OmniRoute Server URL</label>
-        <input type="url" id="omnirouteUrl" placeholder="http://localhost:20128">
+        <label for="magpieUrl">Magpie Gateway URL</label>
+        <input type="url" id="magpieUrl" placeholder="http://127.0.0.1:3425">
       </div>
 
       <div class="form-group">
-        <label for="omnirouteApiKey">Management API Key (optional)</label>
-        <input type="password" id="omnirouteApiKey" placeholder="sk-..." autocomplete="off">
-        <span class="form-hint">Used for protected OmniRoute endpoints. Leave blank if local management key is not required.</span>
+        <label for="magpieApiKey">Gateway Key (optional)</label>
+        <input type="password" id="magpieApiKey" placeholder="magpie-..." autocomplete="off">
+        <span class="form-hint">Only needed when the gateway requires a key, such as access from another computer. Leave blank on this machine.</span>
       </div>
 
       <div class="form-checkbox">
@@ -53,13 +53,13 @@
 
     <section>
       <h2>Responsible Use &amp; Compliance</h2>
-      <p>Use this extension only with accounts, devices, and systems that belong to you or for which you have explicit authorization. Paste copied credentials immediately into OmniRoute and overwrite the clipboard afterwards.</p>
+      <p>Use this extension only with accounts, devices, and systems that belong to you or for which you have explicit authorization. Paste copied credentials where you use them and overwrite the clipboard afterwards.</p>
     </section>
 
     <section>
       <h2>Author / Contact</h2>
       <p>
-        <strong>Omniroute-LIMPAKUS // ROOT ACCESS LAB</strong><br>
+        <strong>Magpie Web</strong><br>
         <a href="mailto:limpakus@gmail.com">limpakus@gmail.com</a>
       </p>
     </section>

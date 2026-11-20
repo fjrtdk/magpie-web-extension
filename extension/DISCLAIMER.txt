@@ -1,4 +1,4 @@
-﻿Omniroute-LIMPAKUS // LEGAL NOTICE
+﻿Magpie Web // LEGAL NOTICE
 
 This extension must only be used on accounts and systems owned by the user or for which the user has explicit authorization.
 
@@ -14,7 +14,7 @@ The extension is provided “as is”, without warranties. The author is not res
 
 AUTHOR / CONTACT
 ----------------
-Omniroute-LIMPAKUS // ROOT ACCESS LAB
+Magpie Web
 limpakus@gmail.com
 
 

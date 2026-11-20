@@ -1,6 +1,6 @@
 # Supported Providers & Credential Matrix
 
-The OmniRoute Web Extension standardizes credential collection across 25+ AI web platforms. Because every AI platform stores authentication data in different places, the extension uses specialized extraction strategies tailored to each provider.
+The Magpie Web Extension standardizes credential collection across 25+ AI web platforms. Because every AI platform stores authentication data in different places, the extension uses specialized extraction strategies tailored to each provider.
 
 ---
 
@@ -41,7 +41,7 @@ The OmniRoute Web Extension standardizes credential collection across 25+ AI web
 Google divides its authentication across multiple domains:
 - Core session tokens like `__Secure-1PSID` are scoped to `.google.com`.
 - Temporary rotating tokens like `__Secure-1PSIDTS` and `__Secure-1PSIDCC` are refreshed on `gemini.google.com`.
-- **How OmniRoute Web Extension solves this**: It scans both `gemini.google.com` and `.google.com`, cross-referencing live HTTP request headers captured via `chrome.webRequest` to build a complete cookie string:
+- **How Magpie Web Extension solves this**: It scans both `gemini.google.com` and `.google.com`, cross-referencing live HTTP request headers captured via `chrome.webRequest` to build a complete cookie string:
   ```text
   __Secure-1PSID=...; __Secure-1PSIDTS=...; __Secure-1PSIDCC=...
   ```

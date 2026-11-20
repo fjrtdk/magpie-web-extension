@@ -1,8 +1,8 @@
-// Omniroute-LIMPAKUS Options & Settings Controller
+// Magpie Web Extension Options & Settings Controller
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const urlInput = document.querySelector('#omnirouteUrl');
-  const apiKeyInput = document.querySelector('#omnirouteApiKey');
+  const urlInput = document.querySelector('#magpieUrl');
+  const apiKeyInput = document.querySelector('#magpieApiKey');
   const autoCheckInput = document.querySelector('#autoCheckUpdates');
   const saveBtn = document.querySelector('#saveSettingsBtn');
   const testBtn = document.querySelector('#testConnectionBtn');
@@ -13,16 +13,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Load existing settings
   try {
     const data = await chrome.storage.local.get([
-      'omniroute_url',
-      'omniroute_api_key',
+      'magpie_url',
+      'magpie_api_key',
       'auto_check_updates'
     ]);
 
     if (urlInput) {
-      urlInput.value = data.omniroute_url || 'http://localhost:20128';
+      urlInput.value = data.magpie_url || 'http://127.0.0.1:3425';
     }
     if (apiKeyInput) {
-      apiKeyInput.value = data.omniroute_api_key || '';
+      apiKeyInput.value = data.magpie_api_key || '';
     }
     if (autoCheckInput) {
       autoCheckInput.checked = data.auto_check_updates !== false;
@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Save settings
   saveBtn?.addEventListener('click', async () => {
-    const url = (urlInput?.value || 'http://localhost:20128').trim();
+    const url = (urlInput?.value || 'http://127.0.0.1:3425').trim();
     const apiKey = (apiKeyInput?.value || '').trim();
     const autoCheck = autoCheckInput?.checked !== false;
 
     try {
       await chrome.storage.local.set({
-        omniroute_url: url,
-        omniroute_api_key: apiKey,
+        magpie_url: url,
+        magpie_api_key: apiKey,
         auto_check_updates: autoCheck
       });
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Test connection
   testBtn?.addEventListener('click', async () => {
-    const url = (urlInput?.value || 'http://localhost:20128').trim().replace(/\/+$/, '');
+    const url = (urlInput?.value || 'http://127.0.0.1:3425').trim().replace(/\/+$/, '');
     const apiKey = (apiKeyInput?.value || '').trim();
 
     if (resultSpan) {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
       const timeoutId = controller ? setTimeout(() => controller.abort(), 5000) : null;
 
-      const res = await fetch(`${url}/api/system/version`, {
+      const res = await fetch(`${url}/api/hello`, {
         method: 'GET',
         headers,
         signal: controller ? controller.signal : undefined
@@ -85,11 +85,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       if (res.ok) {
         const data = await res.json();
-        const current = data.current || 'detected';
-        const latest = data.latest || current;
+        const current = data.version || 'detected';
         if (resultSpan) {
           resultSpan.className = 'form-result success';
-          resultSpan.textContent = `Connected! OmniRoute v${current} (Latest: v${latest})`;
+          resultSpan.textContent = `Connected! Magpie v${current}`;
         }
       } else {
         if (resultSpan) {

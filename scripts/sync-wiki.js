@@ -6,7 +6,7 @@ const WIKI_DIR = path.join(__dirname, '..', 'wiki');
 const TEMP_DIR = path.join(__dirname, '..', '.temp_wiki_sync');
 
 async function syncWiki() {
-  console.log('🔄 Checking GitHub wiki status for rktiwari00/omniroute-web-extension...');
+  console.log('🔄 Checking GitHub wiki status for fjrtdk/magpie-web-extension...');
 
   let token = '';
   try {
@@ -16,7 +16,7 @@ async function syncWiki() {
     process.exit(1);
   }
 
-  const remoteUrl = `https://x-access-token:${token}@github.com/rktiwari00/omniroute-web-extension.wiki.git`;
+  const remoteUrl = `https://x-access-token:${token}@github.com/fjrtdk/magpie-web-extension.wiki.git`;
 
   if (fs.existsSync(TEMP_DIR)) {
     fs.rmSync(TEMP_DIR, { recursive: true, force: true });
@@ -28,7 +28,7 @@ async function syncWiki() {
   } catch (e) {
     console.error('\n⚠️ The GitHub Wiki git repository is not yet initialized by GitHub.');
     console.error('👉 GitHub creates the wiki git repository when you save the first page in the web UI:');
-    console.error('   1. Open: https://github.com/rktiwari00/omniroute-web-extension/wiki/_new');
+    console.error('   1. Open: https://github.com/fjrtdk/magpie-web-extension/wiki/_new');
     console.error('   2. Type anything (or leave default Home) and click the green "Save page" button.');
     console.error('   3. Run `npm run wiki:push` (or `node scripts/sync-wiki.js`) again to automatically push all 6 wiki pages + sidebar!');
     process.exit(1);
@@ -49,9 +49,9 @@ async function syncWiki() {
   console.log('Committing and pushing wiki updates...');
   execSync('git add .', { cwd: TEMP_DIR, stdio: 'inherit' });
   try {
-    execSync('git -c user.name="rktiwari00" -c user.email="rktiwari00@users.noreply.github.com" commit -m "Update wiki documentation"', { cwd: TEMP_DIR, stdio: 'inherit' });
+    execSync('git -c user.name="fjrtdk" -c user.email="fjrtdk@users.noreply.github.com" commit -m "Update wiki documentation"', { cwd: TEMP_DIR, stdio: 'inherit' });
     execSync('git push origin HEAD', { cwd: TEMP_DIR, stdio: 'inherit' });
-    console.log('\n✅ Successfully published all wiki pages to https://github.com/rktiwari00/omniroute-web-extension/wiki !');
+    console.log('\n✅ Successfully published all wiki pages to https://github.com/fjrtdk/magpie-web-extension/wiki !');
   } catch (e) {
     console.log('Nothing new to commit or already up to date.');
   } finally {

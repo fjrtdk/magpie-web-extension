@@ -1,20 +1,21 @@
 /**
- * OmniRoute Software Version Updater
- * Checks for updates to the OmniRoute Server and the Web Extension.
+ * Magpie Version Updater
+ * Checks the local Magpie gateway and the web extension for updates.
  */
 
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
     module.exports = factory();
   } else {
-    root.OmniRouteUpdater = factory();
+    root.MagpieUpdater = factory();
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
-  const CACHE_KEY = 'omniroute_updater_cache';
+  const CACHE_KEY = 'magpie_updater_cache';
   const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
-  const DEFAULT_OMNIROUTE_URL = 'http://localhost:20128';
-  const DEFAULT_REPO = 'rktiwari00/omniroute-web-extension';
-  const UPDATE_COMMAND = 'npm install -g omniroute@latest';
+  const DEFAULT_MAGPIE_URL = 'http://127.0.0.1:3425';
+  const DEFAULT_REPO = 'fjrtdk/magpie-web-extension';
+  const MAGPIE_RELEASES_REPO = 'yetone/magpie-releases';
+  const UPDATE_COMMAND = 'curl -fsSL https://usemagpie.ai/install.sh | sh';
 
   /**
    * Cleans a semver string (strips leading 'v', metadata, etc.)
@@ -45,23 +46,51 @@
   }
 
   /**
-   * Checks OmniRoute server version via local API, falling back to npm registry.
+   * Latest Magpie release from GitHub (yetone/magpie-releases).
+   * Returns null when the check fails.
    */
-  async function checkOmniRouteServer(baseUrl, apiKey, fetchFn) {
+  async function fetchLatestRelease(repo, fetchFn) {
+    try {
+      const res = await fetchFn(`https://api.github.com/repos/${repo}/releases/latest`, {
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Magpie-Web-Extension'
+        }
+      });
+      if (res && res.ok) {
+        const data = await res.json();
+        return {
+          version: cleanSemver(data.tag_name || data.name || ''),
+          url: data.html_url || `https://github.com/${repo}/releases`
+        };
+      }
+    } catch (e) {
+      // Release check failed
+    }
+    return null;
+  }
+
+  /**
+   * Checks the local Magpie gateway (GET /api/hello -> {name, version})
+   * against the latest GitHub release. When the gateway is unreachable,
+   * reports the latest release only.
+   */
+  async function checkMagpieServer(baseUrl, apiKey, fetchFn) {
     const _fetch = fetchFn || (typeof fetch !== 'undefined' ? fetch.bind(globalThis) : null);
     if (!_fetch) throw new Error('No fetch function available');
 
-    const cleanUrl = (baseUrl || DEFAULT_OMNIROUTE_URL).replace(/\/+$/, '');
+    const cleanUrl = (baseUrl || DEFAULT_MAGPIE_URL).replace(/\/+$/, '');
     const headers = { 'Accept': 'application/json' };
     if (apiKey && apiKey.trim()) {
       headers['Authorization'] = `Bearer ${apiKey.trim()}`;
     }
 
+    let current = null;
     try {
       const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
       const timeoutId = controller ? setTimeout(() => controller.abort(), 4000) : null;
-      
-      const res = await _fetch(`${cleanUrl}/api/system/version`, {
+
+      const res = await _fetch(`${cleanUrl}/api/hello`, {
         method: 'GET',
         headers,
         signal: controller ? controller.signal : undefined
@@ -70,53 +99,35 @@
 
       if (res && res.ok) {
         const data = await res.json();
-        const current = data.current || null;
-        const latest = data.latest || current;
-        let updateAvailable = !!data.updateAvailable;
-        if (!updateAvailable && current && latest) {
-          updateAvailable = compareVersions(latest, current) > 0;
-        }
-
-        return {
-          status: updateAvailable ? 'update_available' : 'up_to_date',
-          current,
-          latest,
-          updateAvailable,
-          updateCommand: UPDATE_COMMAND,
-          channel: data.channel || 'npm'
-        };
+        current = data.version || null;
       }
     } catch (e) {
-      // Local server offline or failed, fallback to npm registry
+      // Gateway offline or failed
     }
 
-    // Fallback: check npm registry for latest version
-    try {
-      const npmRes = await _fetch('https://registry.npmjs.org/omniroute/latest', {
-        headers: { 'Accept': 'application/json' }
-      });
-      if (npmRes && npmRes.ok) {
-        const npmData = await npmRes.json();
-        const latest = npmData.version || null;
-        return {
-          status: 'server_offline',
-          current: null,
-          latest,
-          updateAvailable: false,
-          updateCommand: UPDATE_COMMAND,
-          npmLatest: latest
-        };
-      }
-    } catch (e) {
-      // Fallback failed
+    const release = await fetchLatestRelease(MAGPIE_RELEASES_REPO, _fetch);
+
+    if (!current) {
+      return {
+        status: 'server_offline',
+        current: null,
+        latest: release ? release.version : null,
+        updateAvailable: false,
+        updateCommand: UPDATE_COMMAND,
+        releaseUrl: release ? release.url : null
+      };
     }
+
+    const latest = release ? release.version : current;
+    const updateAvailable = release ? compareVersions(latest, current) > 0 : false;
 
     return {
-      status: 'server_offline',
-      current: null,
-      latest: null,
-      updateAvailable: false,
-      updateCommand: UPDATE_COMMAND
+      status: updateAvailable ? 'update_available' : 'up_to_date',
+      current,
+      latest,
+      updateAvailable,
+      updateCommand: UPDATE_COMMAND,
+      releaseUrl: release ? release.url : null
     };
   }
 
@@ -134,7 +145,7 @@
       const res = await _fetch(`https://api.github.com/repos/${targetRepo}/releases/latest`, {
         headers: {
           'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'OmniRoute-Web-Extension'
+          'User-Agent': 'Magpie-Web-Extension'
         }
       });
 
@@ -175,7 +186,7 @@
     const fetchFn = options.fetchFn;
     const forceRefresh = !!options.forceRefresh;
     const currentExtVersion = options.currentExtVersion || (typeof chrome !== 'undefined' && chrome.runtime?.getManifest ? chrome.runtime.getManifest().version : '8.0.0');
-    const omnirouteUrl = options.omnirouteUrl || DEFAULT_OMNIROUTE_URL;
+    const magpieUrl = options.magpieUrl || DEFAULT_MAGPIE_URL;
     const apiKey = options.apiKey || '';
 
     // Check cache
@@ -193,7 +204,7 @@
 
     // Run parallel checks
     const [serverRes, extRes] = await Promise.all([
-      checkOmniRouteServer(omnirouteUrl, apiKey, fetchFn),
+      checkMagpieServer(magpieUrl, apiKey, fetchFn),
       checkExtensionRelease(currentExtVersion, DEFAULT_REPO, fetchFn)
     ]);
 
@@ -219,10 +230,10 @@
   return {
     cleanSemver,
     compareVersions,
-    checkOmniRouteServer,
+    checkMagpieServer,
     checkExtensionRelease,
     checkForUpdates,
     UPDATE_COMMAND,
-    DEFAULT_OMNIROUTE_URL
+    DEFAULT_MAGPIE_URL
   };
 });

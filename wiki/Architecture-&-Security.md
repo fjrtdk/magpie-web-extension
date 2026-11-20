@@ -1,6 +1,6 @@
 # Architecture & Security Model
 
-The OmniRoute Web Extension is engineered with a strict **Local-First, Zero-Exfiltration** security posture. It is designed to run exclusively on developer and personal workstations to facilitate session token collection.
+The Magpie Web Extension is engineered with a strict **Local-First, Zero-Exfiltration** security posture. It is designed to run exclusively on developer and personal workstations to facilitate session token collection.
 
 ---
 
@@ -25,15 +25,15 @@ The OmniRoute Web Extension is engineered with a strict **Local-First, Zero-Exfi
 └────────────┼─────────────────────────────┼─────────────┘
              │                             │
              ▼                             ▼
-    Local OmniRoute API            Active Browser Tabs
- (http://localhost:20128)        (Google, ChatGPT, Claude)
+    Local Magpie Gateway          Active Browser Tabs
+ (http://127.0.0.1:3425)        (Google, ChatGPT, Claude)
 ```
 
 ### Components
 1. **`popup.html` / `popup.js` / `popup.css`**: The main user interface, provider list selector, search bar, language switcher, and updater modal dialog.
 2. **`background.js`**: Manifest V3 background service worker listening to `chrome.webRequest.onSendHeaders` to detect Bearer tokens and cookies in flight for providers like Microsoft Copilot and Google.
-3. **`updater.js`**: Reusable version checking module that queries local OmniRoute status, npm registry, and GitHub releases.
-4. **`options.html` / `options.js`**: Settings page for configuring local OmniRoute ports, management API keys, and test diagnostics.
+3. **`updater.js`**: Reusable version checking module that queries the local Magpie gateway (`/api/hello`) and GitHub releases for both Magpie and the extension.
+4. **`options.html` / `options.js`**: Settings page for configuring the Magpie gateway URL, the optional gateway key, and connection diagnostics.
 
 ---
 
@@ -43,9 +43,8 @@ The OmniRoute Web Extension is engineered with a strict **Local-First, Zero-Exfi
 - **No Analytics / Telemetry**: No tracking libraries, Google Analytics, PostHog, or telemetry endpoints exist in the extension code.
 - **Strict Host Permissions**: All network connections are restricted strictly to:
   - Supported AI domains (e.g., `gemini.google.com`, `chatgpt.com`).
-  - Localhost (`http://localhost:20128/*`, `http://127.0.0.1:20128/*`).
-  - Public registry (`registry.npmjs.org`).
-  - Public release API (`api.github.com/repos/rktiwari00/omniroute-web-extension/*`).
+  - Localhost (`http://127.0.0.1:3425/*`, `http://localhost:3425/*`).
+  - Public release APIs (`api.github.com/repos/yetone/magpie-releases/*` and `api.github.com/repos/fjrtdk/magpie-web-extension/*`).
 - **No Credential Transmission**: Update checks never transmit cookies, credentials, or session tokens.
 
 ### Memory & Session Security

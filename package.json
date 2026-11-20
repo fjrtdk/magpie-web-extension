@@ -1,18 +1,18 @@
 {
-  "name": "omniroute-web-extension",
-  "version": "8.1.0",
-  "description": "Chrome/Chromium extension companion for OmniRoute AI Gateway",
+  "name": "magpie-web-extension",
+  "version": "8.2.0",
+  "description": "Chrome/Chromium extension companion for Magpie: extracts AI web session credentials and tracks Magpie gateway updates",
   "main": "extension/background.js",
   "scripts": {
     "test": "node tests/updater.test.js",
     "wiki:push": "node scripts/sync-wiki.js"
   },
   "keywords": [
-    "omniroute",
+    "magpie",
     "chrome-extension",
     "ai-gateway",
     "session-extractor"
   ],
-  "author": "rktiwari00",
+  "author": "fjrtdk",
   "license": "MIT"
 }

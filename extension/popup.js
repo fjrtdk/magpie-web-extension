@@ -1,4 +1,4 @@
-// Omniroute-LIMPAKUS Popup Controller
+// Magpie Web Popup Controller
 
 const I18N = {
   en: {
@@ -13,7 +13,7 @@ const I18N = {
     localProcessing: 'Credentials are processed only on this device.',
     localSecurityNoticeTitle: 'LOCAL SECURITY NOTICE',
     localSecurityNoticeText1: 'Temporary cookies and authorization headers may be stored locally for up to 10 minutes during provider detection.',
-    localSecurityNoticeText2: 'Copied credentials remain on your clipboard until replaced. Paste immediately into OmniRoute and overwrite the clipboard afterwards.',
+    localSecurityNoticeText2: 'Copied credentials remain on your clipboard until replaced. Paste it where you use this credential and overwrite the clipboard afterwards.',
     clearCapturedData: 'Clear captured data',
     dataClearedSuccess: 'Temporary captured data cleared.',
     dataClearedError: 'Could not clear temporary data.',
@@ -21,7 +21,7 @@ const I18N = {
     selectPlatformPrompt: 'Please select a platform.',
     permissionNotGranted: 'Domain permission was not granted.',
     platformOpenedPrompt: 'Platform opened. Sign in and click “AUTHORIZE AND COPY” again.',
-    credentialCopied: 'Credential copied. Paste it directly into OmniRoute.',
+    credentialCopied: 'Credential copied. Paste it where you use this credential.',
     couldNotCopy: 'Could not copy credential.',
     activeTabError: 'Could not identify the active tab.',
     extraDataTitle: 'Additional details',
@@ -44,14 +44,14 @@ const I18N = {
     errUnsupportedMethod: 'Method not yet supported.',
     supportedPlatformsAria: 'Supported platforms',
     innerEmailTitle: 'Inner.ai account email',
-    innerEmailText: 'OmniRoute requires the token followed by the email used in Inner.ai.',
+    innerEmailText: 'The provider expects the token followed by the email used in Inner.ai.',
     emailLabel: 'Email',
     m365PathPrompt: 'Copy the specific Chathub path segment present in the WebSocket URL.',
     m365PathLabel: 'Chathub Segment',
-    updaterTitle: 'OmniRoute Updater',
+    updaterTitle: 'Magpie Updater',
     updaterCheckNow: 'Check Now',
     updaterChecking: 'Checking for updates...',
-    updaterServerTitle: 'OmniRoute Server',
+    updaterServerTitle: 'Magpie Gateway',
     updaterExtensionTitle: 'Web Extension',
     updaterUpToDate: 'Up to date',
     updaterUpdateAvailable: 'Update Available',
@@ -74,7 +74,7 @@ const I18N = {
     localProcessing: 'As credenciais são processadas apenas neste dispositivo.',
     localSecurityNoticeTitle: 'AVISO DE SEGURANÇA LOCAL',
     localSecurityNoticeText1: 'Cookies temporários e cabeçalhos de autorização podem ser guardados localmente até 10 minutos durante a deteção de fornecedores.',
-    localSecurityNoticeText2: 'As credenciais copiadas permanecem na área de transferência até serem substituídas. Cola imediatamente no OmniRoute e limpa a área de transferência.',
+    localSecurityNoticeText2: 'As credenciais copiadas permanecem na área de transferência até serem substituídas. Cola onde utilizas esta credencial e limpa a área de transferência.',
     clearCapturedData: 'Limpar dados capturados',
     dataClearedSuccess: 'Dados temporários capturados eliminados.',
     dataClearedError: 'Não foi possível limpar os dados temporários.',
@@ -82,7 +82,7 @@ const I18N = {
     selectPlatformPrompt: 'Seleciona uma plataforma.',
     permissionNotGranted: 'A permissão do domínio não foi concedida.',
     platformOpenedPrompt: 'Plataforma aberta. Inicia sessão e volta a clicar em “INJETAR ACESSO E COPIAR”.',
-    credentialCopied: 'Credencial copiada. Cola diretamente no OmniRoute.',
+    credentialCopied: 'Credencial copiada. Cola onde utilizas esta credencial.',
     couldNotCopy: 'Não foi possível copiar.',
     activeTabError: 'Não foi possível identificar o separador ativo.',
     extraDataTitle: 'Dados adicionais',
@@ -105,14 +105,14 @@ const I18N = {
     errUnsupportedMethod: 'Método ainda não suportado.',
     supportedPlatformsAria: 'Plataformas suportadas',
     innerEmailTitle: 'Email da conta Inner.ai',
-    innerEmailText: 'O OmniRoute exige o token seguido do email usado no Inner.ai.',
+    innerEmailText: 'O fornecedor exige o token seguido do email usado no Inner.ai.',
     emailLabel: 'Email',
     m365PathPrompt: 'Copia o segmento específico do caminho Chathub presente no URL do WebSocket.',
     m365PathLabel: 'Segmento Chathub',
-    updaterTitle: 'Atualizador OmniRoute',
+    updaterTitle: 'Atualizador Magpie',
     updaterCheckNow: 'Verificar Agora',
     updaterChecking: 'A verificar atualizações...',
-    updaterServerTitle: 'Servidor OmniRoute',
+    updaterServerTitle: 'Servidor Magpie',
     updaterExtensionTitle: 'Extensão Web',
     updaterUpToDate: 'Atualizado',
     updaterUpdateAvailable: 'Atualização Disponível',
@@ -135,7 +135,7 @@ const I18N = {
     localProcessing: 'Las credenciales se procesan únicamente en este dispositivo.',
     localSecurityNoticeTitle: 'AVISO DE SEGURIDAD LOCAL',
     localSecurityNoticeText1: 'Las cookies temporales y cabeceras de autorización pueden guardarse localmente hasta 10 minutos.',
-    localSecurityNoticeText2: 'Las credenciales copiadas permanecen en el portapapeles hasta reemplazarlas. Pégalas de inmediato en OmniRoute.',
+    localSecurityNoticeText2: 'Las credenciales copiadas permanecen en el portapapeles hasta reemplazarlas. Pégalas donde uses esta credencial.',
     clearCapturedData: 'Limpiar datos capturados',
     dataClearedSuccess: 'Datos temporales capturados eliminados.',
     dataClearedError: 'No se pudieron limpiar los datos temporales.',
@@ -143,7 +143,7 @@ const I18N = {
     selectPlatformPrompt: 'Selecciona una plataforma.',
     permissionNotGranted: 'No se concedió el permiso para el dominio.',
     platformOpenedPrompt: 'Plataforma abierta. Inicia sesión y haz clic de nuevo en “AUTORIZAR Y COPIAR”.',
-    credentialCopied: 'Credencial copiada. Pégala directamente en OmniRoute.',
+    credentialCopied: 'Credencial copiada. Pégala donde uses esta credencial.',
     couldNotCopy: 'No se pudo copiar la credencial.',
     activeTabError: 'No se pudo identificar la pestaña activa.',
     extraDataTitle: 'Detalles adicionales',
@@ -166,14 +166,14 @@ const I18N = {
     errUnsupportedMethod: 'Método aún no compatible.',
     supportedPlatformsAria: 'Plataformas compatibles',
     innerEmailTitle: 'Correo de la cuenta Inner.ai',
-    innerEmailText: 'OmniRoute requiere el token seguido del correo usado en Inner.ai.',
+    innerEmailText: 'El proveedor requiere el token seguido del correo usado en Inner.ai.',
     emailLabel: 'Correo',
     m365PathPrompt: 'Copia el segmento de ruta Chathub en la URL del WebSocket.',
     m365PathLabel: 'Segmento Chathub',
-    updaterTitle: 'Actualizador OmniRoute',
+    updaterTitle: 'Actualizador Magpie',
     updaterCheckNow: 'Comprobar ahora',
     updaterChecking: 'Buscando actualizaciones...',
-    updaterServerTitle: 'Servidor OmniRoute',
+    updaterServerTitle: 'Servidor Magpie',
     updaterExtensionTitle: 'Extensión Web',
     updaterUpToDate: 'Actualizado',
     updaterUpdateAvailable: 'Actualización disponible',
@@ -204,7 +204,7 @@ const I18N = {
     selectPlatformPrompt: 'Bitte eine Plattform auswählen.',
     permissionNotGranted: 'Domain-Berechtigung wurde nicht erteilt.',
     platformOpenedPrompt: 'Plattform geöffnet. Bitte anmelden und erneut auf „AUTORISIEREN & KOPIEREN“ klicken.',
-    credentialCopied: 'Anmeldedaten kopiert. Direkt in OmniRoute einfügen.',
+    credentialCopied: 'Anmeldedaten kopiert. Dort einfügen, wo du diese Anmeldedaten verwendest.',
     couldNotCopy: 'Anmeldedaten konnten nicht kopiert werden.',
     activeTabError: 'Aktiver Tab konnte nicht identifiziert werden.',
     extraDataTitle: 'Zusätzliche Angaben',
@@ -227,14 +227,14 @@ const I18N = {
     errUnsupportedMethod: 'Methode noch nicht unterstützt.',
     supportedPlatformsAria: 'Unterstützte Plattformen',
     innerEmailTitle: 'Inner.ai E-Mail',
-    innerEmailText: 'OmniRoute benötigt das Token gefolgt von der Inner.ai E-Mail.',
+    innerEmailText: 'Der Anbieter benötigt das Token gefolgt von der Inner.ai E-Mail.',
     emailLabel: 'E-Mail',
     m365PathPrompt: 'Spezifisches Chathub-Segment aus der WebSocket-URL kopieren.',
     m365PathLabel: 'Chathub-Segment',
-    updaterTitle: 'OmniRoute Updater',
+    updaterTitle: 'Magpie Updater',
     updaterCheckNow: 'Jetzt prüfen',
     updaterChecking: 'Suche nach Updates...',
-    updaterServerTitle: 'OmniRoute Server',
+    updaterServerTitle: 'Magpie Gateway',
     updaterExtensionTitle: 'Web-Erweiterung',
     updaterUpToDate: 'Auf dem neuesten Stand',
     updaterUpdateAvailable: 'Update verfügbar',
@@ -265,7 +265,7 @@ const I18N = {
     selectPlatformPrompt: 'Veuillez sélectionner une plateforme.',
     permissionNotGranted: 'L’autorisation du domaine n’a pas été accordée.',
     platformOpenedPrompt: 'Plateforme ouverte. Connectez-vous puis cliquez à nouveau sur « AUTORISER ET COPIER ».',
-    credentialCopied: 'Identifiant copié. Collez-le directement dans OmniRoute.',
+    credentialCopied: 'Identifiant copié. Collez-le là où vous utilisez cet identifiant.',
     couldNotCopy: 'Impossible de copier l’identifiant.',
     activeTabError: 'Impossible d’identifier l’onglet actif.',
     extraDataTitle: 'Informations supplémentaires',
@@ -288,14 +288,14 @@ const I18N = {
     errUnsupportedMethod: 'Méthode pas encore prise en charge.',
     supportedPlatformsAria: 'Plateformes prises en charge',
     innerEmailTitle: 'E-mail du compte Inner.ai',
-    innerEmailText: 'OmniRoute nécessite le jeton suivi de l’e-mail utilisé sur Inner.ai.',
+    innerEmailText: 'Le fournisseur nécessite le jeton suivi de l’e-mail utilisé sur Inner.ai.',
     emailLabel: 'E-mail',
     m365PathPrompt: 'Copiez le segment de chemin Chathub présent dans l’URL WebSocket.',
     m365PathLabel: 'Segment Chathub',
-    updaterTitle: 'Mise à jour OmniRoute',
+    updaterTitle: 'Mise à jour Magpie',
     updaterCheckNow: 'Vérifier maintenant',
     updaterChecking: 'Recherche de mises à jour...',
-    updaterServerTitle: 'Serveur OmniRoute',
+    updaterServerTitle: 'Serveur Magpie',
     updaterExtensionTitle: 'Extension Web',
     updaterUpToDate: 'À jour',
     updaterUpdateAvailable: 'Mise à jour disponible',
@@ -318,7 +318,7 @@ const I18N = {
     localProcessing: 'Le credenziali vengono elaborate solo su questo dispositivo.',
     localSecurityNoticeTitle: 'AVVISO DI SICUREZZA LOCALE',
     localSecurityNoticeText1: 'I cookie temporanei e le intestazioni di autorizzazione possono essere memorizzati localmente fino a 10 minuti.',
-    localSecurityNoticeText2: 'Le credenziali copiate rimangono negli appunti fino alla sostituzione. Incolla subito in OmniRoute.',
+    localSecurityNoticeText2: 'Le credenziali copiate rimangono negli appunti fino alla sostituzione. Incollala dove usi questa credenziale.',
     clearCapturedData: 'Cancella dati acquisiti',
     dataClearedSuccess: 'Dati temporanei acquisiti cancellati.',
     dataClearedError: 'Impossibile cancellare i dati temporanei.',
@@ -326,7 +326,7 @@ const I18N = {
     selectPlatformPrompt: 'Seleziona una piattaforma.',
     permissionNotGranted: 'L’autorizzazione per il dominio non è stata concessa.',
     platformOpenedPrompt: 'Piattaforma aperta. Accedi e fai nuovamente clic su “AUTORIZZA E COPIA”.',
-    credentialCopied: 'Credenziale copiata. Incollala direttamente in OmniRoute.',
+    credentialCopied: 'Credenziale copiata. Incollala dove usi questa credenziale.',
     couldNotCopy: 'Impossibile copiare la credenziale.',
     activeTabError: 'Impossibile identificare la scheda attiva.',
     extraDataTitle: 'Dettagli aggiuntivi',
@@ -349,14 +349,14 @@ const I18N = {
     errUnsupportedMethod: 'Metodo non ancora supportato.',
     supportedPlatformsAria: 'Piattaforme supportate',
     innerEmailTitle: 'Email dell’account Inner.ai',
-    innerEmailText: 'OmniRoute richiede il token seguito dall’email utilizzata su Inner.ai.',
+    innerEmailText: 'Il provider richiede il token seguito dall’email utilizzata su Inner.ai.',
     emailLabel: 'Email',
     m365PathPrompt: 'Copia il segmento del percorso Chathub presente nell’URL del WebSocket.',
     m365PathLabel: 'Segmento Chathub',
-    updaterTitle: 'Aggiornamento OmniRoute',
+    updaterTitle: 'Aggiornamento Magpie',
     updaterCheckNow: 'Controlla ora',
     updaterChecking: 'Controllo aggiornamenti...',
-    updaterServerTitle: 'Server OmniRoute',
+    updaterServerTitle: 'Server Magpie',
     updaterExtensionTitle: 'Estensione Web',
     updaterUpToDate: 'Aggiornato',
     updaterUpdateAvailable: 'Aggiornamento disponibile',
@@ -398,10 +398,10 @@ function applyLocalization() {
   setText('#localOnlyLabel', 'localOnly', 'LOCAL ONLY // ZERO EXFIL');
   setText('#securityNoticeTitle', 'localSecurityNoticeTitle', 'LOCAL SECURITY NOTICE');
   setText('#securityNoticeText1', 'localSecurityNoticeText1', 'Temporary cookies and authorization headers may be stored locally for up to 10 minutes during provider detection.');
-  setText('#securityNoticeText2', 'localSecurityNoticeText2', 'Copied credentials remain on your clipboard until replaced. Paste immediately into OmniRoute and overwrite the clipboard afterwards.');
+  setText('#securityNoticeText2', 'localSecurityNoticeText2', 'Copied credentials remain on your clipboard until replaced. Paste it where you use this credential and overwrite the clipboard afterwards.');
     setText('#clearDataBtn', 'clearCapturedData', 'Clear captured data');
-  setText('#modalUpdaterTitle', 'updaterTitle', 'OmniRoute Updater');
-  setText('#serverCardTitle', 'updaterServerTitle', 'OmniRoute Server');
+  setText('#modalUpdaterTitle', 'updaterTitle', 'Magpie Updater');
+  setText('#serverCardTitle', 'updaterServerTitle', 'Magpie Gateway');
   setText('#extCardTitle', 'updaterExtensionTitle', 'Web Extension');
   setText('#checkNowText', 'updaterCheckNow', 'Check Now');
   setText('#copyCmdText', 'updaterCopyCommand', 'Copy Update Command');
@@ -830,7 +830,7 @@ async function extract(p) {
     if (!token) throw new Error(t('errNotFoundToken', 'Could not find token cookie.'));
     const email = await askExtra(
       t('innerEmailTitle', 'Inner.ai account email'),
-      t('innerEmailText', 'OmniRoute requires the token followed by the email used in Inner.ai.'),
+      t('innerEmailText', 'The provider expects the token followed by the email used in Inner.ai.'),
       t('emailLabel', 'Email'),
       'user@example.com'
     );
@@ -868,7 +868,7 @@ async function extract(p) {
       'Microsoft 365 Copilot',
       t('m365PathPrompt', 'Copy the specific Chathub path segment present in the WebSocket URL.'),
       t('m365PathLabel', 'Chathub Segment'),
-      'e.g.: cid/... or path indicated by OmniRoute'
+      'e.g.: cid/... or path indicated by Magpie'
     );
     if (!token) throw new Error(t('errM365Token', 'Chathub WebSocket access_token not yet captured.'));
     if (!path) throw new Error(t('errM365Segment', 'Missing Chathub segment.'));
@@ -896,7 +896,7 @@ async function copySelected() {
 
     const credential = await extract(selected);
     await navigator.clipboard.writeText(credential);
-    setStatus(t('credentialCopied', 'Credential copied. Paste it directly into OmniRoute.'), 'success');
+    setStatus(t('credentialCopied', 'Credential copied. Paste it where you use this credential.'), 'success');
   } catch (e) {
     setStatus(e.message || t('couldNotCopy', 'Could not copy credential.'), 'error');
   } finally {
@@ -973,7 +973,7 @@ function renderUpdaterUI(info) {
       }
       if (downloadBtn) {
         downloadBtn.style.display = 'inline-flex';
-        downloadBtn.href = e.releaseUrl || 'https://github.com/rktiwari00/omniroute-web-extension/releases';
+        downloadBtn.href = e.releaseUrl || 'https://github.com/fjrtdk/magpie-web-extension/releases';
       }
     } else {
       if (extVersion) extVersion.textContent = `v${e.current || '8.0.0'}`;
@@ -993,13 +993,13 @@ async function runUpdaterCheck(forceRefresh = false) {
   if (btn && forceRefresh) btn.classList.add('badge-checking');
 
   try {
-    const settings = await chrome.storage.local.get(['omniroute_url', 'omniroute_api_key']);
-    const omnirouteUrl = settings.omniroute_url || 'http://localhost:20128';
-    const apiKey = settings.omniroute_api_key || '';
+    const settings = await chrome.storage.local.get(['magpie_url', 'magpie_api_key']);
+    const magpieUrl = settings.magpie_url || 'http://127.0.0.1:3425';
+    const apiKey = settings.magpie_api_key || '';
 
-    if (typeof OmniRouteUpdater !== 'undefined') {
-      const info = await OmniRouteUpdater.checkForUpdates({
-        omnirouteUrl,
+    if (typeof MagpieUpdater !== 'undefined') {
+      const info = await MagpieUpdater.checkForUpdates({
+        magpieUrl,
         apiKey,
         forceRefresh
       });
@@ -1091,9 +1091,9 @@ $('#checkNowBtn')?.addEventListener('click', () => {
 });
 
 $('#copyUpdateCmdBtn')?.addEventListener('click', async () => {
-  const cmd = (typeof OmniRouteUpdater !== 'undefined' && OmniRouteUpdater.UPDATE_COMMAND)
-    ? OmniRouteUpdater.UPDATE_COMMAND
-    : 'npm install -g omniroute@latest';
+  const cmd = (typeof MagpieUpdater !== 'undefined' && MagpieUpdater.UPDATE_COMMAND)
+    ? MagpieUpdater.UPDATE_COMMAND
+    : 'curl -fsSL https://usemagpie.ai/install.sh | sh';
   await navigator.clipboard.writeText(cmd);
   const copyText = $('#copyCmdText');
   if (copyText) {

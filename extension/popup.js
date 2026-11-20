@@ -624,6 +624,18 @@ function cookieHeader(cookies) {
     .join('; ');
 }
 
+// ponytail: one cookie per name, longer domain then longer path. Chrome sends that one.
+function headerFromSent(cookies) {
+  const best = new Map();
+  const score = (c) => ((c.domain || '').replace(/^\./, '').length * 1000) + (c.path || '').length;
+  for (const c of cookies || []) {
+    if (!c?.name) continue;
+    const prev = best.get(c.name);
+    if (!prev || score(c) > score(prev)) best.set(c.name, c);
+  }
+  return [...best.values()].map(c => `${c.name}=${c.value}`).join('; ');
+}
+
 function cookieChunks(cookies, prefix) {
   return cookies
     .filter(c => c.name === prefix || c.name.startsWith(prefix + '.'))
@@ -770,9 +782,14 @@ async function extract(p) {
       return need.filter(n => !have.has(n) && ![...have].some(x => x.startsWith(n + '.')));
     };
     const cap = await captured(p.domains[0]);
-    const built = cookieHeader(cookies);
-    // The live request header is what Magpie asks for. A jar built from
-    // chrome.cookies is the fallback when that header was not captured yet.
+    let built = cookieHeader(cookies);
+    if (p.id === 'gemini' || p.id === 'gemini-business') {
+      try {
+        const sent = await chrome.cookies.getAll({ url: p.url });
+        const line = headerFromSent(sent);
+        if (line) built = line;
+      } catch {}
+    }
     let header = '';
     if (cap?.cookie && missingOf(cap.cookie).length === 0) header = cap.cookie;
     else if (built && missingOf(built).length === 0) header = built;

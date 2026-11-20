@@ -38,8 +38,8 @@ The extension supports 25+ AI platforms across various authentication mechanisms
 
 | Provider ID | Platform Name | Extraction Method | Required Credential |
 |---|---|---|---|
-| `gemini` | **Google Gemini** | Google Cookie Traversal | `__Secure-1PSID` + `__Secure-1PSIDTS` |
-| `gemini-business` | **Gemini Business** | Google Cookie Traversal | `__Secure-1PSID` + `__Secure-1PSIDTS` |
+| `gemini` | **Google Gemini** | Full request Cookie | `SID` + `HSID` + `SSID` + `APISID` + `SAPISID` |
+| `gemini-business` | **Gemini Business** | Full request Cookie | `SID` + `HSID` + `SSID` + `APISID` + `SAPISID` |
 | `chatgpt` | **ChatGPT Web** | Cookie Prefix | `__Secure-next-auth.session-token` |
 | `claude` | **Claude Web** | Cookie First Match | `sessionKey` / `__Secure-next-auth.session-token` |
 | `deepseek` | **DeepSeek Web** | Local Storage | `userToken` |

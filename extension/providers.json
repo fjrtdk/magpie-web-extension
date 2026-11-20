@@ -107,8 +107,9 @@
       "gemini.google"
     ],
     "url": "https://business.gemini.google/",
-    "mode": "google_cookie",
-    "hint": "__Secure-1PSID + __Secure-1PSIDTS"
+    "mode": "cookie_header",
+    "required": ["SID", "HSID", "SSID", "APISID", "SAPISID", "__Secure-1PSID", "__Secure-1PSIDTS"],
+    "hint": "Full Cookie header: SID, HSID, SSID, APISID, SAPISID"
   },
   {
     "id": "gemini",
@@ -121,8 +122,9 @@
       "google.com"
     ],
     "url": "https://gemini.google.com/",
-    "mode": "google_cookie",
-    "hint": "__Secure-1PSID + __Secure-1PSIDTS"
+    "mode": "cookie_header",
+    "required": ["SID", "HSID", "SSID", "APISID", "SAPISID", "__Secure-1PSID", "__Secure-1PSIDTS"],
+    "hint": "Full Cookie header: SID, HSID, SSID, APISID, SAPISID"
   },
   {
     "id": "grok",

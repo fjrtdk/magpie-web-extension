@@ -763,11 +763,23 @@ async function extract(p) {
   }
 
   if (p.mode === 'cookie_header') {
+    const need = p.required || [];
+    const namesIn = (h) => new Set(String(h || '').split(';').map(p => p.split('=')[0].trim()).filter(Boolean));
+    const missingOf = (h) => {
+      const have = namesIn(h);
+      return need.filter(n => !have.has(n) && ![...have].some(x => x.startsWith(n + '.')));
+    };
     const cap = await captured(p.domains[0]);
-    const header = cap?.cookie || cookieHeader(cookies);
+    const built = cookieHeader(cookies);
+    // The live request header is what Magpie asks for. A jar built from
+    // chrome.cookies is the fallback when that header was not captured yet.
+    let header = '';
+    if (cap?.cookie && missingOf(cap.cookie).length === 0) header = cap.cookie;
+    else if (built && missingOf(built).length === 0) header = built;
+    else header = (missingOf(built).length < missingOf(cap?.cookie).length ? built : cap?.cookie) || built || '';
     if (!header) throw new Error(t('errNotFoundCookies', 'Could not find cookies. Please refresh the page or send a message.'));
-    const missing = (p.required || []).filter(n => !header.includes(n + '=') && !cookies.some(c => c.name === n || c.name.startsWith(n + '.')));
-    if (missing.length) throw new Error(t('errMissingFields', `Missing: ${missing.join(', ')}.`, { fields: missing.join(', ') }));
+    const missing = missingOf(header);
+    if (missing.length) throw new Error(t('errMissingFields', `Missing: ${missing.join(', ')}. Refresh the page, then copy again.`, { fields: missing.join(', ') }));
     return header;
   }
 
